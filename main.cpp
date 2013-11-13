@@ -110,6 +110,14 @@ void __fastcall TMainForm::GLScene()
 {
         glClear(GL_COLOR_BUFFER_BIT);
         //drawScene();
+        if (pelota != NULL){
+                glBegin(GL_POLYGON);
+                for (int i = 0; i < MAX_LADOS; i++)
+                {
+                         glVertex2d(pelota->circulo[i]->x,pelota->circulo[i]->y);
+                }
+                glEnd();
+        }
         glFlush();
         SwapBuffers(hdc);
 }
@@ -128,4 +136,38 @@ void __fastcall TMainForm::FormDestroy(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TMainForm::FormClick(TObject *Sender)
+{
+        if (inicio == true)
+          {
+                GLfloat escalaAncho = ClientWidth / (xRight - xLeft);
+                GLfloat escalaAlto = ClientHeight / (yTop - yBot);
+                TPoint p;
+                GetCursorPos(&p);
+                xCentro = p.x - this->Left;
+                yCentro = this->Height - (p.y - this->Top);
+                inicio = false;
+                GLfloat xAbs =  (xCentro / escalaAncho) + xLeft;
+                GLfloat yAbs =  (yCentro / escalaAlto) + yBot;
+
+                pelota = new Pelota(new PV2D(xAbs,yAbs),radio);
+                
+
+                GLScene();
+          }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::NuevaPelota1Click(TObject *Sender)
+{
+       TFormRadio* FormRadio;
+       FormRadio = new TFormRadio(NULL);
+       FormRadio->ShowModal();
+       AnsiString rad = FormRadio->EditRadio->Text;
+       radio = atoi(rad.c_str());
+       ShowMessage("Presione un punto para colocar la pelota");
+       inicio = true;
+}
+//---------------------------------------------------------------------------
 

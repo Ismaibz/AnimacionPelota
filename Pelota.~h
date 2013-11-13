@@ -4,17 +4,24 @@
 #define PelotaH
 
 #include <gl/GL.h>
+#include "PV2D.h"
+
+const int MAX_LADOS = 200;
 
 class Pelota{
 
 	public:
-		PV2D * centro;
+		PV2D* centro;
                 GLdouble radio;
+                PV2D* vector;
+                PV2D* circulo[MAX_LADOS];
 
-	PV2D();
-	PV2D(GLdouble xn, GLdouble yn);
-	PV2D(const PV2D &p);
-	~PV2D();
+
+	Pelota();
+	Pelota(PV2D* centron, GLdouble radion);
+        void poner_vector(PV2D* vectorn);
+
+	
 
 };
 //---------------------------------------------------------------------------

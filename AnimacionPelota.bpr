@@ -6,12 +6,12 @@
     <PROJECT value="AnimacionPelota.exe"/>
     <OBJFILES value="AnimacionPelota.obj main.obj 
       \\10.10.69.107\GitHub\AnimacionPelota\Lapiz.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj"/>
+      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj TFormRadio.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) main.dfm"/>
+    <RESDEPEN value="$(RESFILES) main.dfm TFormRadio.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="Vcl50.lib"/>

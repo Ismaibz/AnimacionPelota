@@ -5,6 +5,9 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
+#include <Menus.hpp>
+#include "Pelota.h"
+#include "TFormRadio.h"
 
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -12,10 +15,15 @@
 class TMainForm : public TForm
 {
 __published:	// IDE-managed Components
+        TMainMenu *MainMenu1;
+        TMenuItem *Salir1;
+        TMenuItem *NuevaPelota1;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
+        void __fastcall FormClick(TObject *Sender);
+        void __fastcall NuevaPelota1Click(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;
@@ -25,6 +33,12 @@ private:
         GLfloat RatioViewPort;
         void __fastcall SetPixelFormatDescriptor();
         void __fastcall GLScene();
+        bool inicio;
+        
+        GLdouble xCentro;
+        GLdouble yCentro;
+        GLdouble radio;
+        Pelota *pelota;
         
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);
