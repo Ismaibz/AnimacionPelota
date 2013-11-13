@@ -6,7 +6,7 @@
     <PROJECT value="AnimacionPelota.exe"/>
     <OBJFILES value="AnimacionPelota.obj main.obj 
       \\10.10.69.107\GitHub\AnimacionPelota\Lapiz.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj"/>
+      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -30,12 +30,13 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
     <MAINSOURCE value="AnimacionPelota.cpp"/>
-    <INCLUDEPATH value="\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I\\10.10.69.107\GitHub\AnimacionPelota -I$(BCB)\include 
+    <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot; 
+      -I\\10.10.69.107\GitHub\AnimacionPelota -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
       -tW -tWM"/>
