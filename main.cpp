@@ -141,21 +141,46 @@ void __fastcall TMainForm::FormClick(TObject *Sender)
 {
         if (inicio == true)
           {
-                GLfloat escalaAncho = ClientWidth / (xRight - xLeft);
-                GLfloat escalaAlto = ClientHeight / (yTop - yBot);
+                GLfloat escalaAncho = (xRight - xLeft) / ClientWidth;
+                GLfloat escalaAlto = (yTop - yBot) / ClientHeight;
                 TPoint p;
                 GetCursorPos(&p);
-                xCentro = p.x - this->Left;
-                yCentro = this->Height - (p.y - this->Top);
+                //xCentro = (p.x - this->Left) - ClientWidth / 2;
+                yCentro = ClientHeight / 2 - (p.y - this->Top);
                 inicio = false;
-                GLfloat xAbs =  (xCentro / escalaAncho) + xLeft;
-                GLfloat yAbs =  (yCentro / escalaAlto) + yBot;
+                //GLfloat xAbs =  (xCentro * escalaAncho);
+                GLfloat xAbs = p.x / (ClientWidth / (xRight - xLeft)) - this->Left + xLeft;
+                //GLfloat yAbs =  (yCentro * escalaAlto);
+                GLfloat yAbs = -(p.y / (ClientHeight / (yTop - yBot)) + yBot);
 
                 pelota = new Pelota(new PV2D(xAbs,yAbs),radio);
-                
 
                 GLScene();
-          }
+                ShowMessage("Presione un punto para la direccion de la pelota");
+                direccion = true;
+          } else{
+        if (direccion == true){
+                direccion = false;
+                GLfloat escalaAncho = (xRight - xLeft) / ClientWidth;
+                GLfloat escalaAlto = (yTop - yBot) / ClientHeight;
+                TPoint p;
+                GetCursorPos(&p);
+                //xCentro = (p.x - this->Left) - ClientWidth / 2;
+                yCentro = ClientHeight / 2 - (p.y - this->Top);
+                //GLfloat xAbs =  (xCentro * escalaAncho);
+                GLfloat xAbs = p.x / (ClientWidth / (xRight - xLeft)) - this->Left + xLeft;
+                //GLfloat yAbs =  (yCentro * escalaAlto);
+                GLfloat yAbs = -(p.y / (ClientHeight / (yTop - yBot)) + yBot);
+
+                pelota->poner_vector(new PV2D(xAbs - pelota->centro->x, yAbs - pelota->centro->y));
+
+                TFormVelocidad* FormVelocidad;
+                FormVelocidad = new TFormVelocidad(NULL);
+                FormVelocidad->ShowModal();
+                AnsiString vel = FormVelocidad->EditVelocidad->Text;
+                pelota->ponerVelocidad(atoi(vel.c_str()));
+        }
+        };
 }
 //---------------------------------------------------------------------------
 
@@ -168,6 +193,19 @@ void __fastcall TMainForm::NuevaPelota1Click(TObject *Sender)
        radio = atoi(rad.c_str());
        ShowMessage("Presione un punto para colocar la pelota");
        inicio = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Salir1Click(TObject *Sender)
+{
+        exit(-1);        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::AvanzarMenuClick(TObject *Sender)
+{
+        pelota->movimiento();
+        GLScene();        
 }
 //---------------------------------------------------------------------------
 

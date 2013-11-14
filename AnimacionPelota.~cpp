@@ -4,10 +4,11 @@
 #pragma hdrstop
 USERES("AnimacionPelota.res");
 USEFORM("main.cpp", MainForm);
-USEUNIT("\\10.10.69.107\GitHub\AnimacionPelota\Lapiz.cpp");
-USEUNIT("\\10.10.69.107\GitHub\AnimacionPelota\PV2D.cpp");
+USEFORM("TFormRadio.cpp", FormRadio);
+USEUNIT("Lapiz.cpp");
 USEUNIT("Pelota.cpp");
-USEFORM("TFormRadio.cpp", Form1);
+USEUNIT("PV2D.cpp");
+USEFORM("TFormVelocidad.cpp", VelocidadForm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -15,7 +16,8 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         {
                  Application->Initialize();
                  Application->CreateForm(__classid(TMainForm), &MainForm);
-                 Application->CreateForm(__classid(TForm1), &Form1);
+                 Application->CreateForm(__classid(TFormRadio), &FormRadio);
+                 Application->CreateForm(__classid(TVelocidadForm), &VelocidadForm);
                  Application->Run();
         }
         catch (Exception &exception)

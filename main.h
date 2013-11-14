@@ -8,6 +8,7 @@
 #include <Menus.hpp>
 #include "Pelota.h"
 #include "TFormRadio.h"
+#include "TFormVelocidad.h"
 
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -18,12 +19,15 @@ __published:	// IDE-managed Components
         TMainMenu *MainMenu1;
         TMenuItem *Salir1;
         TMenuItem *NuevaPelota1;
+        TMenuItem *AvanzarMenu;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall FormClick(TObject *Sender);
         void __fastcall NuevaPelota1Click(TObject *Sender);
+        void __fastcall Salir1Click(TObject *Sender);
+        void __fastcall AvanzarMenuClick(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;
@@ -34,6 +38,7 @@ private:
         void __fastcall SetPixelFormatDescriptor();
         void __fastcall GLScene();
         bool inicio;
+        bool direccion;
         
         GLdouble xCentro;
         GLdouble yCentro;

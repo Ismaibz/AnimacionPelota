@@ -22,10 +22,15 @@ object MainForm: TMainForm
     Top = 40
     object Salir1: TMenuItem
       Caption = 'Salir'
+      OnClick = Salir1Click
     end
     object NuevaPelota1: TMenuItem
       Caption = 'Nueva Pelota'
       OnClick = NuevaPelota1Click
+    end
+    object AvanzarMenu: TMenuItem
+      Caption = 'Avanzar'
+      OnClick = AvanzarMenuClick
     end
   end
 end

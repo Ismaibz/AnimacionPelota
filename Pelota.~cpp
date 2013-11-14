@@ -37,4 +37,20 @@ void Pelota::poner_vector(PV2D* vectorn){
         delete vectorn;
 }
 
+void Pelota::ponerVelocidad(GLdouble vel){
+        velocidad = vel;
+}
+
+void Pelota::movimiento(){
+        //Uso tiempo de 1 unidad
+        //Buscar el vector unitario y multiplicarlo x velocidad
+        GLdouble modulo = sqrt(pow(vector->x,2) + pow(vector->y,2));
+        PV2D* unitario = new PV2D(vector->x/modulo, vector->y/modulo);
+        PV2D* destino = new PV2D(centro->x + unitario->y*velocidad, centro->y + unitario->y*velocidad);
+        for (int i=0; i<MAX_LADOS; i++){
+                circulo[i]->x = circulo[i]->x + unitario->x*velocidad;
+                circulo[i]->y = circulo[i]->y + unitario->y*velocidad;
+        }
+}
+
 #pragma package(smart_init)

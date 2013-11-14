@@ -4,14 +4,13 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="AnimacionPelota.exe"/>
-    <OBJFILES value="AnimacionPelota.obj main.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\Lapiz.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj TFormRadio.obj"/>
+    <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Lapiz.obj Pelota.obj PV2D.obj 
+      TFormVelocidad.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) main.dfm TFormRadio.dfm"/>
+    <RESDEPEN value="$(RESFILES) main.dfm TFormRadio.dfm TFormVelocidad.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="Vcl50.lib"/>
@@ -20,7 +19,7 @@
       Dss50.bpi TeeQR50.bpi VCLIB50.bpi Vclmid50.bpi vclie50.bpi Inetdb50.bpi 
       Inet50.bpi NMFast50.bpi webmid50.bpi bcbie50.bpi dclocx50.bpi 
       bcb2kaxserver50.bpi GLPanel50.bpi"/>
-    <PATHCPP value=".;\\10.10.69.107\GitHub\AnimacionPelota"/>
+    <PATHCPP value=".;"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -30,12 +29,13 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
     <MAINSOURCE value="AnimacionPelota.cpp"/>
-    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot;;\\10.10.69.107\GitHub\AnimacionPelota;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot; 
+    <IDLCFLAGS value="-I&quot;C:\Program Files\Borland\CBuilder5\Projects&quot; 
+      -I&quot;C:\Program Files (x86)\Borland\CBuilder5\Projects&quot; 
       -I\\10.10.69.107\GitHub\AnimacionPelota -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
