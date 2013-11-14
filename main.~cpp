@@ -24,7 +24,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     if(wglMakeCurrent(hdc, hrc) == false)
     	ShowMessage("Could not MakeCurrent");
     //Cor de fondo de la ventana
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
     //inicialización del volumen de vista
     xRight=200.0; xLeft=-xRight;
@@ -37,6 +37,11 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     RatioViewPort=1.0;
 
     // inicialización de las variables del programa
+    GLdouble xCentro = 0;
+    GLdouble yCentro = 0;
+    GLdouble radio = 0;
+    Pelota *pelota = NULL;
+    obstaculos = new Lista<Obstaculo*>();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SetPixelFormatDescriptor()
@@ -109,14 +114,26 @@ void __fastcall TMainForm::FormResize(TObject *Sender)
 void __fastcall TMainForm::GLScene()
 {
         glClear(GL_COLOR_BUFFER_BIT);
+        glColor3f(0.0,0.0,0.0);
         //drawScene();
-        if (pelota != null){
+        if (pelota != NULL){
                 glBegin(GL_POLYGON);
                 for (int i = 0; i < MAX_LADOS; i++)
                 {
                          glVertex2d(pelota->circulo[i]->x,pelota->circulo[i]->y);
                 }
                 glEnd();
+
+                obstaculos->Primero();
+                while (obstaculos->Actual()){
+                        Obstaculo *aux = obstaculos->ValorActual();
+                        glBegin(GL_POLYGON);
+                                glVertex2d(aux->vertices[0]->x,aux->vertices[0]->y);
+                                glVertex2d(aux->vertices[1]->x,aux->vertices[1]->y);
+                                glVertex2d(aux->vertices[2]->x,aux->vertices[2]->y);
+                        glEnd();
+                        obstaculos->Siguiente();
+                }
         }
         glFlush();
         SwapBuffers(hdc);
@@ -152,7 +169,31 @@ void __fastcall TMainForm::FormClick(TObject *Sender)
                 GLfloat yAbs =  (yCentro / escalaAlto) + yBot;
 
                 pelota = new Pelota(new PV2D(xAbs,yAbs),radio);
-                
+
+                PV2D *v1 = new PV2D(xAbs + 210,yAbs);
+                PV2D *v2 = new PV2D(xAbs + 200,yAbs + 200);
+                PV2D *v3 = new PV2D(xAbs + 200,yAbs - 200);
+
+                Obstaculo *triangulo = new Triangulo(v1,v2,v3);
+                obstaculos->InsertarPrincipio(triangulo);
+
+                v1 = new PV2D(xAbs ,yAbs + 210);
+                v2 = new PV2D(xAbs + 200,yAbs + 200);
+                v2 = new PV2D(xAbs - 200,yAbs + 200);
+                triangulo = new Triangulo(v1,v2,v3);
+                obstaculos->InsertarPrincipio(triangulo);
+
+                v1 = new PV2D(xAbs - 210 ,yAbs );
+                v2 = new PV2D(xAbs - 200,yAbs + 200);
+                v2 = new PV2D(xAbs - 200,yAbs - 200);
+                triangulo = new Triangulo(v1,v2,v3);
+                obstaculos->InsertarPrincipio(triangulo);
+
+                v1 = new PV2D(xAbs ,yAbs - 210);
+                v2 = new PV2D(xAbs + 200,yAbs - 200);
+                v2 = new PV2D(xAbs - 200,yAbs - 200);
+                triangulo = new Triangulo(v1,v2,v3);
+                obstaculos->InsertarPrincipio(triangulo);
 
                 GLScene();
           }

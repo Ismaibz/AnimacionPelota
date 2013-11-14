@@ -8,6 +8,9 @@
 #include <Menus.hpp>
 #include "Pelota.h"
 #include "TFormRadio.h"
+#include "Lista.h"
+#include "Obstaculo.h"
+#include "Triangulo.h"
 
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -39,6 +42,7 @@ private:
         GLdouble yCentro;
         GLdouble radio;
         Pelota *pelota;
+        Lista<Obstaculo*> *obstaculos;
         
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

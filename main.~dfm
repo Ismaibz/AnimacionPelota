@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 238
-  Top = 160
+  Left = 205
+  Top = 214
   Width = 696
-  Height = 480
+  Height = 427
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

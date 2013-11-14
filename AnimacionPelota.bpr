@@ -6,7 +6,8 @@
     <PROJECT value="AnimacionPelota.exe"/>
     <OBJFILES value="AnimacionPelota.obj main.obj 
       \\10.10.69.107\GitHub\AnimacionPelota\Lapiz.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj TFormRadio.obj"/>
+      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj TFormRadio.obj 
+      Obstaculo.obj Triangulo.obj Circulo.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>

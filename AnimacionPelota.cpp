@@ -8,6 +8,9 @@ USEUNIT("\\10.10.69.107\GitHub\AnimacionPelota\Lapiz.cpp");
 USEUNIT("\\10.10.69.107\GitHub\AnimacionPelota\PV2D.cpp");
 USEUNIT("Pelota.cpp");
 USEFORM("TFormRadio.cpp", FormRadio);
+USEUNIT("Obstaculo.cpp");
+USEUNIT("Triangulo.cpp");
+USEUNIT("Circulo.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
