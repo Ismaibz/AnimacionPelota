@@ -19,6 +19,7 @@ __published:	// IDE-managed Components
         TMainMenu *MainMenu1;
         TMenuItem *Salir1;
         TMenuItem *NuevaPelota1;
+        TMenuItem *AvanzarMenu;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
@@ -26,6 +27,7 @@ __published:	// IDE-managed Components
         void __fastcall FormClick(TObject *Sender);
         void __fastcall NuevaPelota1Click(TObject *Sender);
         void __fastcall Salir1Click(TObject *Sender);
+        void __fastcall AvanzarMenuClick(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;

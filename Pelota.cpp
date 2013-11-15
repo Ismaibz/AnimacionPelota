@@ -14,7 +14,7 @@ Pelota::Pelota(PV2D* centron, GLdouble radion){
         radio = radion;
         delete centron;
 
-        GLdouble alfa = (2.0*PI) / 50.0;
+        GLdouble alfa = (2.0*PI) / MAX_LADOS;
         GLdouble beta = (PI - alfa) / 2.0;
         GLdouble lado = 2.0 * cos(beta) * radio;
 

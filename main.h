@@ -28,6 +28,8 @@ __published:	// IDE-managed Components
         void __fastcall NuevaPelota1Click(TObject *Sender);
         void __fastcall Salir1Click(TObject *Sender);
         void __fastcall AvanzarMenuClick(TObject *Sender);
+        void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
 private:
         HDC hdc;
         HGLRC hrc;
