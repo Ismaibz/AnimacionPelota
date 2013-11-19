@@ -27,7 +27,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
     //inicialización del volumen de vista
-    xRight=200.0; xLeft=-xRight;
+    xRight=400.0; xLeft=-xRight;
     yTop=xRight; yBot=-yTop;
     //Radio del volumen de vista == 1
 

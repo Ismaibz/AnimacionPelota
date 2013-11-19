@@ -5,17 +5,13 @@
 USERES("AnimacionPelota.res");
 USEFORM("main.cpp", MainForm);
 USEFORM("TFormRadio.cpp", FormRadio);
-USEUNIT("Lapiz.cpp");
-USEUNIT("Pelota.cpp");
-<<<<<<< HEAD
-USEFORM("TFormRadio.cpp", FormRadio);
 USEUNIT("Obstaculo.cpp");
 USEUNIT("Triangulo.cpp");
 USEUNIT("Circulo.cpp");
-USE("\\10.10.69.107\GitHub\AnimacionPelota\Lapiz.h", File);
-=======
+USEUNIT("Lapiz.cpp");
+USEUNIT("Pelota.cpp");
 USEUNIT("PV2D.cpp");
-USEFORM("TFormVelocidad.cpp", VelocidadForm);
+USEFORM("TFormVelocidad.cpp", FormVelocidad);
 >>>>>>> origin/Rama-de-Alvaro
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
@@ -25,10 +21,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->Initialize();
                  Application->CreateForm(__classid(TMainForm), &MainForm);
                  Application->CreateForm(__classid(TFormRadio), &FormRadio);
-<<<<<<< HEAD
-=======
-                 Application->CreateForm(__classid(TVelocidadForm), &VelocidadForm);
->>>>>>> origin/Rama-de-Alvaro
+                 Application->CreateForm(__classid(TFormVelocidad), &FormVelocidad);
                  Application->Run();
         }
         catch (Exception &exception)

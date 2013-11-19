@@ -4,15 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="AnimacionPelota.exe"/>
-<<<<<<< HEAD
-    <OBJFILES value="AnimacionPelota.obj main.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\Lapiz.obj 
-      \\10.10.69.107\GitHub\AnimacionPelota\PV2D.obj Pelota.obj TFormRadio.obj 
-      Obstaculo.obj Triangulo.obj Circulo.obj"/>
-=======
-    <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Lapiz.obj Pelota.obj PV2D.obj 
-      TFormVelocidad.obj"/>
->>>>>>> origin/Rama-de-Alvaro
+    <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Obstaculo.obj Triangulo.obj 
+      Circulo.obj Lapiz.obj Pelota.obj PV2D.obj TFormVelocidad.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>

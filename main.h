@@ -8,13 +8,13 @@
 #include <Menus.hpp>
 #include "Pelota.h"
 #include "TFormRadio.h"
-<<<<<<< HEAD
+
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
-=======
+
 #include "TFormVelocidad.h"
->>>>>>> origin/Rama-de-Alvaro
+
 
 #include <gl\gl.h>
 #include <gl\glu.h>
