@@ -9,12 +9,16 @@
 #include "Pelota.h"
 #include "TFormRadio.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
 =======
 #include "TFormVelocidad.h"
 >>>>>>> origin/Rama-de-Alvaro
+=======
+#include "TFormVelocidad.h"
+>>>>>>> origin/Rama-de-Isma
 
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -34,8 +38,11 @@ __published:	// IDE-managed Components
         void __fastcall NuevaPelota1Click(TObject *Sender);
         void __fastcall Salir1Click(TObject *Sender);
         void __fastcall AvanzarMenuClick(TObject *Sender);
+<<<<<<< HEAD
         void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
+=======
+>>>>>>> origin/Rama-de-Isma
 private:
         HDC hdc;
         HGLRC hrc;
