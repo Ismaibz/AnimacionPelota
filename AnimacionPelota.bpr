@@ -5,6 +5,7 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="AnimacionPelota.exe"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Obstaculo.obj Triangulo.obj 
       Circulo.obj Lapiz.obj Pelota.obj PV2D.obj TFormVelocidad.obj"/>
 =======
@@ -17,6 +18,10 @@
     <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Lapiz.obj Pelota.obj PV2D.obj 
       TFormVelocidad.obj"/>
 >>>>>>> origin/Rama-de-Alvaro
+>>>>>>> origin/Rama-de-Isma
+=======
+    <OBJFILES value="AnimacionPelota.obj main.obj TFormRadio.obj Obstaculo.obj Triangulo.obj 
+      Circulo.obj Lapiz.obj Pelota.obj PV2D.obj TFormVelocidad.obj"/>
 >>>>>>> origin/Rama-de-Isma
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
