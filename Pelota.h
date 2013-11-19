@@ -15,11 +15,14 @@ class Pelota{
                 GLdouble radio;
                 PV2D* vector;
                 PV2D* circulo[MAX_LADOS];
+                GLdouble velocidad;
 
 
 	Pelota();
 	Pelota(PV2D* centron, GLdouble radion);
         void poner_vector(PV2D* vectorn);
+        void ponerVelocidad(GLdouble vel);
+        void movimiento();
 
 	
 

@@ -50,7 +50,7 @@ void Lapiz::turn(GLdouble a)
 
 void Lapiz::forward(GLdouble dist, bool draw)
 {
-        PV2D *p = new PV2D(pos->x + dist*cos(dir),pos->y + dist*sin(dir));
+        PV2D *p = new PV2D(pos->x + dist*cos(dir*PI),pos->y + dist*sin(dir*PI));
         if (draw)
         {
                 glBegin (GL_LINES);

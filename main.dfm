@@ -12,8 +12,8 @@ object MainForm: TMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
-  OnClick = FormClick
   OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,10 +22,16 @@ object MainForm: TMainForm
     Top = 40
     object Salir1: TMenuItem
       Caption = 'Salir'
+      OnClick = Salir1Click
     end
     object NuevaPelota1: TMenuItem
       Caption = 'Nueva Pelota'
       OnClick = NuevaPelota1Click
+    end
+    object AvanzarMenu: TMenuItem
+      Caption = 'Avanzar'
+      ShortCut = 65
+      OnClick = AvanzarMenuClick
     end
   end
 end
