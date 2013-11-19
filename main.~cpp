@@ -150,6 +150,8 @@ void __fastcall TMainForm::FormDestroy(TObject *Sender)
     ReleaseDC(Handle,hdc);
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(hrc);
+    delete pelota;
+    delete obstaculos;
 }
 //---------------------------------------------------------------------------
 

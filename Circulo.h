@@ -6,22 +6,7 @@
 
 #include "Obstaculo.h"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 const int MAX_LADOS = 500;
-
-=======
-<<<<<<< HEAD:Circulo.h
-const int MAX_LADOS = 100;
-=======
-const int MAX_LADOS = 500;
->>>>>>> origin/Rama-de-Alvaro:Pelota.~h
->>>>>>> origin/Rama-de-Isma
-=======
-
-const int MAX_LADOS = 500;
->>>>>>> origin/Rama-de-Isma
 
 class Circulo : public Obstaculo{
 
@@ -29,18 +14,8 @@ class Circulo : public Obstaculo{
 		PV2D* centro;
                 GLdouble radio;
                 PV2D* circulo[MAX_LADOS];
-<<<<<<< HEAD
-<<<<<<< HEAD
                 bool colision(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);  
-=======
-<<<<<<< HEAD:Circulo.h
-                bool colision(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn); 
-=======
->>>>>>> origin/Rama-de-Isma
-=======
-                bool colision(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);
 
->>>>>>> origin/Rama-de-Isma
                 GLdouble velocidad;
 
 
@@ -50,15 +25,7 @@ class Circulo : public Obstaculo{
         void ponerVelocidad(GLdouble vel);
         void movimiento();
 
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/Rama-de-Alvaro:Pelota.~h
->>>>>>> origin/Rama-de-Isma
-=======
->>>>>>> origin/Rama-de-Isma
 
 };
 
