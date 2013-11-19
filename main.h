@@ -8,14 +8,10 @@
 #include <Menus.hpp>
 #include "Pelota.h"
 #include "TFormRadio.h"
-<<<<<<< HEAD
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
-=======
 #include "TFormVelocidad.h"
->>>>>>> origin/Rama-de-Alvaro
-
 #include <gl\gl.h>
 #include <gl\glu.h>
 //---------------------------------------------------------------------------
@@ -30,7 +26,6 @@ __published:	// IDE-managed Components
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
-        void __fastcall FormClick(TObject *Sender);
         void __fastcall NuevaPelota1Click(TObject *Sender);
         void __fastcall Salir1Click(TObject *Sender);
         void __fastcall AvanzarMenuClick(TObject *Sender);

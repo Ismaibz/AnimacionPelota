@@ -30,6 +30,7 @@ object MainForm: TMainForm
     end
     object AvanzarMenu: TMenuItem
       Caption = 'Avanzar'
+      ShortCut = 65
       OnClick = AvanzarMenuClick
     end
   end

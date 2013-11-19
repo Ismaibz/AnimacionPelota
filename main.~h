@@ -8,8 +8,10 @@
 #include <Menus.hpp>
 #include "Pelota.h"
 #include "TFormRadio.h"
+#include "Lista.h"
+#include "Obstaculo.h"
+#include "Triangulo.h"
 #include "TFormVelocidad.h"
-
 #include <gl\gl.h>
 #include <gl\glu.h>
 //---------------------------------------------------------------------------
@@ -24,10 +26,11 @@ __published:	// IDE-managed Components
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
-        void __fastcall FormClick(TObject *Sender);
         void __fastcall NuevaPelota1Click(TObject *Sender);
         void __fastcall Salir1Click(TObject *Sender);
         void __fastcall AvanzarMenuClick(TObject *Sender);
+        void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
 private:
         HDC hdc;
         HGLRC hrc;
@@ -44,6 +47,7 @@ private:
         GLdouble yCentro;
         GLdouble radio;
         Pelota *pelota;
+        Lista<Obstaculo*> *obstaculos;
         
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);
