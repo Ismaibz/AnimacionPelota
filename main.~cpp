@@ -40,8 +40,8 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     GLdouble xCentro = 0;
     GLdouble yCentro = 0;
     GLdouble radio = 0;
-    Pelota *pelota = NULL;
-    obstaculos = new Lista<Obstaculo*>();
+    
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SetPixelFormatDescriptor()
@@ -116,24 +116,8 @@ void __fastcall TMainForm::GLScene()
         glClear(GL_COLOR_BUFFER_BIT);
         glColor3f(0.0,0.0,0.0);
         //drawScene();
-        if (pelota != NULL){
-                glBegin(GL_POLYGON);
-                for (int i = 0; i < MAX_LADOS; i++)
-                {
-                         glVertex2d(pelota->circulo[i]->x,pelota->circulo[i]->y);
-                }
-                glEnd();
-
-                obstaculos->Primero();
-                while (obstaculos->Actual()){
-                        Obstaculo *aux = obstaculos->ValorActual();
-                        glBegin(GL_POLYGON);
-                                glVertex2d(aux->vertices[0]->x,aux->vertices[0]->y);
-                                glVertex2d(aux->vertices[1]->x,aux->vertices[1]->y);
-                                glVertex2d(aux->vertices[2]->x,aux->vertices[2]->y);
-                        glEnd();
-                        obstaculos->Siguiente();
-                }
+        if (escena != NULL){
+               escena -> draw();
         }
         glFlush();
         SwapBuffers(hdc);
@@ -150,8 +134,7 @@ void __fastcall TMainForm::FormDestroy(TObject *Sender)
     ReleaseDC(Handle,hdc);
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(hrc);
-    delete pelota;
-    delete obstaculos;
+    delete escena;
 }
 //---------------------------------------------------------------------------
 
@@ -175,7 +158,7 @@ void __fastcall TMainForm::Salir1Click(TObject *Sender)
 
 void __fastcall TMainForm::AvanzarMenuClick(TObject *Sender)
 {
-        pelota->movimiento();
+        escena->step();
         GLScene();
 }
 //---------------------------------------------------------------------------
@@ -188,39 +171,39 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 GLfloat escalaAlto = ClientHeight / (yTop - yBot);
                 xCentro = (X + xLeft * escalaAncho) / escalaAncho;
                 yCentro = (ClientHeight/2 - Y) / escalaAlto;
-                pelota = new Pelota(new PV2D(xCentro,yCentro),radio);
+                escena =  new Escena (new Pelota(new PV2D(xCentro,yCentro),radio));
                 inicio = false;
 
                 GLScene();
                 ShowMessage("Presione un punto para la direccion de la pelota");
                 direccion = true;
 
-                PV2D *v1 = new PV2D(ClientWidth *4,0);
-                PV2D *v2 = new PV2D(ClientWidth,ClientHeight);
-                PV2D *v3 = new PV2D(ClientWidth,- ClientHeight);
+                PV2D *v1 = new PV2D(ClientWidth + 100,0);
+                PV2D *v2 = new PV2D(ClientWidth ,ClientHeight + 100);
+                PV2D *v3 = new PV2D(ClientWidth ,- ClientHeight - 100);
 
                 Obstaculo *triangulo = new Triangulo(v1,v2,v3);
-                obstaculos->InsertarPrincipio(triangulo);
+                escena->aniadirObstaculo(triangulo);
 
-                v1 = new PV2D(- ClientWidth *4 ,0);
-                v2 = new PV2D(- ClientWidth,ClientHeight);
-                v3 = new PV2D(- ClientWidth,- ClientHeight);
+                v1 = new PV2D(- ClientWidth - 100 ,0);
+                v2 = new PV2D(- ClientWidth ,ClientHeight + 100);
+                v3 = new PV2D(- ClientWidth ,- ClientHeight - 100);
 
                 triangulo = new Triangulo(v1,v2,v3);
-                obstaculos->InsertarPrincipio(triangulo);
+                escena->aniadirObstaculo(triangulo);
 
 
-                v1 = new PV2D(0,ClientHeight *4);
-                v2 = new PV2D(ClientWidth,ClientHeight);
-                v3 = new PV2D(- ClientWidth, ClientHeight);
+                v1 = new PV2D(0,ClientHeight + 100);
+                v2 = new PV2D(ClientWidth + 100 ,ClientHeight );
+                v3 = new PV2D(- ClientWidth - 100, ClientHeight );
                 triangulo = new Triangulo(v1,v2,v3);
-                obstaculos->InsertarPrincipio(triangulo);
+                escena->aniadirObstaculo(triangulo);
 
-                v1 = new PV2D(0,-ClientHeight *4 );
-                v2 = new PV2D(ClientWidth,-ClientHeight);
-                v3 = new PV2D(- ClientWidth,- ClientHeight);
+                v1 = new PV2D(0,-ClientHeight - 100 );
+                v2 = new PV2D(ClientWidth + 100,-ClientHeight );
+                v3 = new PV2D(- ClientWidth - 100,- ClientHeight );
                 triangulo = new Triangulo(v1,v2,v3);
-                obstaculos->InsertarPrincipio(triangulo);
+                escena->aniadirObstaculo(triangulo);
 
 
 
@@ -232,13 +215,13 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                         GLfloat escalaAlto = ClientHeight / (yTop - yBot);
                         xCentro = (X + xLeft * escalaAncho) / escalaAncho;
                         yCentro = (ClientHeight/2 - Y) / escalaAlto;
-                        pelota->poner_vector(new PV2D(xCentro - pelota->centro->x, yCentro - pelota->centro->y));
+                        escena->pelota->poner_vector(new PV2D(xCentro - pelota->centro->x, yCentro - pelota->centro->y));
                         GLScene();
                         TFormVelocidad* FormVelocidad;
                         FormVelocidad = new TFormVelocidad(NULL);
                         FormVelocidad->ShowModal();
                         AnsiString vel = FormVelocidad->EditVelocidad->Text;
-                        pelota->ponerVelocidad(atoi(vel.c_str()));
+                        escena->pelota->ponerVelocidad(atoi(vel.c_str()));
                         GLScene();
                 }
         }

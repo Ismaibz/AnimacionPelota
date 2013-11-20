@@ -14,7 +14,7 @@ USEUNIT("Circulo.cpp");
 USEUNIT("Lapiz.cpp");
 USEUNIT("Pelota.cpp");
 USEUNIT("PV2D.cpp");
-USEFORM("TFormRadio.cpp", TFormRadio);
+USEFORM("TFormRadio.cpp", FormRadio);
 USEFORM("TFormVelocidad.cpp", FormVelocidad);
 
 //---------------------------------------------------------------------------

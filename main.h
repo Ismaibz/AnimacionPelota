@@ -17,6 +17,9 @@
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
+
+#include "Escena.h"
+
 #include "TFormVelocidad.h"
 #include <gl\gl.h>
 #include <gl\glu.h>
@@ -52,8 +55,7 @@ private:
         GLdouble xCentro;
         GLdouble yCentro;
         GLdouble radio;
-        Pelota *pelota;
-        Lista<Obstaculo*> *obstaculos;
+        Escena *escena;
         
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

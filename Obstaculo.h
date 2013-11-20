@@ -7,8 +7,8 @@
 #include "PV2D.h"
 class Obstaculo{
         public:
-                PV2D* vertices[];
-                //virtual bool colision(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);
+                virtual void draw() = 0;
+                virtual bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn) = 0;
 
 
 };
