@@ -200,8 +200,8 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 escena->aniadirObstaculo(triangulo);
 
                 v1 = new PV2D(0,-ClientHeight - 100 );
-                v2 = new PV2D(- ClientWidth - 100,-ClientHeight );
-                v3 = new PV2D( ClientWidth + 100,- ClientHeight );
+                v2 = new PV2D(ClientWidth + 100,-ClientHeight );
+                v3 = new PV2D(- ClientWidth - 100,- ClientHeight );
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
