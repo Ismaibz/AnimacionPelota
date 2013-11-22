@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 215
-  Top = 301
+  Left = 315
+  Top = 171
   Width = 696
   Height = 427
   Caption = 'MainForm'
@@ -33,5 +33,15 @@ object MainForm: TMainForm
       ShortCut = 65
       OnClick = AvanzarMenuClick
     end
+    object ActivaTimer: TMenuItem
+      Caption = 'Timer'
+      OnClick = ActivaTimerClick
+    end
+  end
+  object Timer: TTimer
+    Interval = 100
+    OnTimer = TimerTimer
+    Left = 168
+    Top = 56
   end
 end

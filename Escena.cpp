@@ -12,7 +12,7 @@
 void Escena::step()
 {
         bool exitoG = false;
-        GLdouble thitG = pelota->velocidad;
+        GLdouble thitG = 2.0 * pelota->velocidad;
         PV2D *nG;
         bool exitoL = false;
         GLdouble thitL = 0;
@@ -20,7 +20,7 @@ void Escena::step()
         for (int i = 0; i < nObstaculos; i++){
 
                 exitoL = obstaculos[i]->interseccion(pelota->centro, pelota->vector,thitL,nL);
-                if (exitoL && thitL >0 && thitL <= (pelota->velocidad)*1.1) exitoL = true;
+                if (exitoL && thitL >0 && thitL <= (pelota->velocidad)*1.05) exitoL = true;
                 else exitoL = false;
 
                 if (exitoL && thitL < thitG){
@@ -32,7 +32,7 @@ void Escena::step()
 
 
 
-        if (!exitoG) pelota->movimiento(1);
+        if (!exitoG) pelota->movimiento(pelota->velocidad);
         else {
                 pelota->movimiento(thitG);
                 pelota->rebota(nG);

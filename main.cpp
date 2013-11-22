@@ -40,6 +40,9 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     GLdouble xCentro = 0;
     GLdouble yCentro = 0;
     GLdouble radio = 0;
+    Timer->Enabled = false;
+
+
     
 
 }
@@ -226,6 +229,21 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 }
         }
        GLScene();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::TimerTimer(TObject *Sender)
+{
+        Timer->Enabled = false;
+        escena->step();
+        GLScene();
+        Timer->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ActivaTimerClick(TObject *Sender)
+{
+        Timer->Enabled = !Timer->Enabled;
 }
 //---------------------------------------------------------------------------
 

@@ -21,6 +21,7 @@
 #include "Escena.h"
 
 #include "TFormVelocidad.h"
+#include <ExtCtrls.hpp>
 #include <gl\gl.h>
 #include <gl\glu.h>
 //---------------------------------------------------------------------------
@@ -31,6 +32,8 @@ __published:	// IDE-managed Components
         TMenuItem *Salir1;
         TMenuItem *NuevaPelota1;
         TMenuItem *AvanzarMenu;
+        TTimer *Timer;
+        TMenuItem *ActivaTimer;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
@@ -40,6 +43,8 @@ __published:	// IDE-managed Components
         void __fastcall AvanzarMenuClick(TObject *Sender);
         void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
+        void __fastcall TimerTimer(TObject *Sender);
+        void __fastcall ActivaTimerClick(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;

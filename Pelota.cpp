@@ -46,11 +46,11 @@ void Pelota::movimiento(GLdouble avance){
         //Buscar el vector unitario y multiplicarlo x velocidad / / avance
         GLdouble modulo = sqrt(pow(vector->x,2) + pow(vector->y,2));
         PV2D* unitario = new PV2D(vector->x/modulo, vector->y/modulo);
-        PV2D* destino = new PV2D(centro->x + unitario->x*velocidad / avance, centro->y + unitario->y*velocidad / avance);
+        PV2D* destino = new PV2D(centro->x + unitario->x*avance, centro->y + unitario->y*avance);
         centro = new PV2D(*destino);
         for (int i=0; i<MAX_LADOS; i++){
-                circulo[i]->x = circulo[i]->x + unitario->x*velocidad / avance;
-                circulo[i]->y = circulo[i]->y + unitario->y*velocidad / avance;
+                circulo[i]->x = circulo[i]->x + unitario->x*avance;
+                circulo[i]->y = circulo[i]->y + unitario->y*avance;
         }
 }
 

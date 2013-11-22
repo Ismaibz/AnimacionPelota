@@ -33,5 +33,15 @@ object MainForm: TMainForm
       ShortCut = 65
       OnClick = AvanzarMenuClick
     end
+    object ActivaTimer: TMenuItem
+      Caption = 'Timer'
+      OnClick = ActivaTimerClick
+    end
+  end
+  object Timer: TTimer
+    Interval = 100
+    OnTimer = TimerTimer
+    Left = 168
+    Top = 56
   end
 end
