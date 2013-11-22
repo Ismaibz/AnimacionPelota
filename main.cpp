@@ -144,7 +144,7 @@ void __fastcall TMainForm::NuevaPelota1Click(TObject *Sender)
        FormRadio = new TFormRadio(NULL);
        FormRadio->ShowModal();
        AnsiString rad = FormRadio->EditRadio->Text;
-       radio = atoi(rad.c_str());
+       radio = atof(rad.c_str());
        ShowMessage("Presione un punto para colocar la pelota");
        inicio = true;
 }
@@ -186,16 +186,16 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 escena->aniadirObstaculo(triangulo);
 
                 v1 = new PV2D(- ClientWidth - 100 ,0);
-                v2 = new PV2D(- ClientWidth ,ClientHeight + 100);
-                v3 = new PV2D(- ClientWidth ,- ClientHeight - 100);
+                v2 = new PV2D(- ClientWidth ,-ClientHeight - 100);
+                v3 = new PV2D(- ClientWidth ,ClientHeight + 100);
 
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
 
                 v1 = new PV2D(0,ClientHeight + 100);
-                v2 = new PV2D(ClientWidth + 100 ,ClientHeight );
-                v3 = new PV2D(- ClientWidth - 100, ClientHeight );
+                v2 = new PV2D(-ClientWidth - 100 ,ClientHeight );
+                v3 = new PV2D( ClientWidth + 100, ClientHeight );
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
@@ -221,7 +221,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                         FormVelocidad = new TFormVelocidad(NULL);
                         FormVelocidad->ShowModal();
                         AnsiString vel = FormVelocidad->EditVelocidad->Text;
-                        escena->pelota->ponerVelocidad(atoi(vel.c_str()));
+                        escena->pelota->ponerVelocidad(atof(vel.c_str()));
                         GLScene();
                 }
         }

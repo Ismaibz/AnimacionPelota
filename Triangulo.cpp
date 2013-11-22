@@ -18,9 +18,9 @@ Triangulo::Triangulo(PV2D* p0,PV2D* p1,PV2D* p2){
         lados[1] = p2->restaVertices(p1);
         lados[2] = p0->restaVertices(p2);
 
-        normal[0] = new PV2D(-lados[0]->y ,lados[0]->x);
-        normal[1] = new PV2D(-lados[1]->y ,lados[1]->x);
-        normal[2] = new PV2D(-lados[2]->y ,lados[2]->x);
+        normal[0] = new PV2D(lados[0]->y ,-lados[0]->x);
+        normal[1] = new PV2D(lados[1]->y ,-lados[1]->x);
+        normal[2] = new PV2D(lados[2]->y ,-lados[2]->x);
 
         //Calculo del baricentro
         baricentro = new PV2D(vertices[0]->x + vertices[1]->x + vertices[2]->x /3.0 ,vertices[0]->y + vertices[1]->y + vertices[2]->y /3.0);
@@ -37,10 +37,13 @@ Triangulo::Triangulo(PV2D* p0,PV2D* p1,PV2D* p2){
 };
 
 
-bool Triangulo::interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn){
+bool Triangulo::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn){
         GLdouble dist[3];
         GLdouble proy[3];
         GLdouble sign[3];
+
+        PV2D* v = new PV2D(direccion->x / modulo(direccion), direccion->y / modulo(direccion) );
+
 
         PV2D* normalDeV = new PV2D(-v->y, v->x);
         for (int i=0; i<3; i++){
@@ -67,7 +70,7 @@ bool Triangulo::interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn){
                 }
         }
 
-        if (nHits < 2){
+         if (nHits < 2){
                 for (int i=0; i<3; i++){
                         if (sign[i] == 0){
                                 hit[nHits] = proy[i];
@@ -76,7 +79,7 @@ bool Triangulo::interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn){
                         }
                 }
         }
-        GLdouble min = +20000.0;
+        GLdouble min = 9999999999999.0;
         int m;
         for (int i=0; i<nHits; i++){
                 if (hit[i] < min) {
@@ -102,7 +105,6 @@ void Triangulo::draw()
                 glVertex2d(vertices[1]->x,vertices[1]->y);
                 glVertex2d(vertices[2]->x,vertices[2]->y);
        glEnd();
-
 }
 #pragma package(smart_init)
 

@@ -16,7 +16,7 @@ class Triangulo : public Obstaculo{
                 PV2D* normalV[3];
                 PV2D* baricentro;
                 Triangulo(PV2D* p0,PV2D* p1,PV2D* p2);
-                bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);
+                bool interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn);
                 void draw();
         private:
                 double modulo(PV2D *v);

@@ -46,8 +46,8 @@ void Pelota::movimiento(GLdouble avance){
         //Buscar el vector unitario y multiplicarlo x velocidad / / avance
         GLdouble modulo = sqrt(pow(vector->x,2) + pow(vector->y,2));
         PV2D* unitario = new PV2D(vector->x/modulo, vector->y/modulo);
-        PV2D* destino = new PV2D(centro->x + unitario->y*velocidad / avance, centro->y + unitario->y*velocidad / avance);
-        centro = destino;
+        PV2D* destino = new PV2D(centro->x + unitario->x*velocidad / avance, centro->y + unitario->y*velocidad / avance);
+        centro = new PV2D(*destino);
         for (int i=0; i<MAX_LADOS; i++){
                 circulo[i]->x = circulo[i]->x + unitario->x*velocidad / avance;
                 circulo[i]->y = circulo[i]->y + unitario->y*velocidad / avance;
@@ -56,7 +56,7 @@ void Pelota::movimiento(GLdouble avance){
 
 void Pelota::rebota(PV2D *nG){
 
-        vector = new PV2D (*nG);
+        vector = new PV2D (nG->x,nG->y);
 }
 
 #pragma package(smart_init)

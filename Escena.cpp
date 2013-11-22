@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Escena.h"
+#include "Triangulo.h"
 
 //---------------------------------------------------------------------------
 
@@ -14,22 +15,26 @@ void Escena::step()
         GLdouble thitG = 2.0;
         PV2D *nG;
         bool exitoL = false;
-
+        double x = ((Triangulo*) obstaculos[3])->normal[1]->x;
+        double y = ((Triangulo*) obstaculos[3])->normal[1]->y;
         GLdouble thitL = 0;
         PV2D *nL;
         for (int i = 0; i < nObstaculos; i++){
-                exitoL = obstaculos[i]->interseccion(pelota->centro, pelota->vector,thitL,nL);
 
-                if (exitoL && thitL >0 && thitL <= 1) exitoL = true;
+                exitoL = obstaculos[i]->interseccion(pelota->centro, pelota->vector,thitL,nL);
+                 x = ((Triangulo*) obstaculos[3])->normal[1]->x;
+                 y = ((Triangulo*) obstaculos[3])->normal[1]->y;
+                if (exitoL && thitL >0 && thitL <= pelota->velocidad) exitoL = true;
                 else exitoL = false;
 
                 if (exitoL && thitL < thitG){
                         thitG = thitL;
-                        nG = nL;
+                        nG = new PV2D (*nL);
                 }
+                exitoG |= exitoL;
         }
 
-        exitoG |= exitoL;
+
 
         if (!exitoG) pelota->movimiento(1);
         else {
@@ -56,6 +61,14 @@ void Escena::draw()
      {
         obstaculos[i]->draw();
      }
+     glColor3f(1.0,1.0,1.0);
+     glBegin(GL_POINTS);
+        glVertex2d(pelota->centro->x,pelota->centro->y);
+     glEnd();
+     glColor3f(0,0,0);
+
+
+     
 
 }
 
