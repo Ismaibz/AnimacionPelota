@@ -48,7 +48,7 @@ bool Circulo::interseccion(PV2D* P, PV2D* vGrande, double &thit, PV2D* &normalIn
 
         double discriminante = pow(b,2) - 4*a*c;
         if (discriminante < 0) return false;
-        if (discriminante == 0){
+        if (discriminante > -0.1 && discriminante < 0.1){
                 thit = -b / 2*a;
                 PV2D* puntoCorte = new PV2D(P->x + thit * v->x, P->y + thit * v->y);
                 normalIn = new PV2D((puntoCorte->y - centro->y), (puntoCorte->x - centro->x));
