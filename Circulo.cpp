@@ -50,20 +50,23 @@ bool Circulo::interseccion(PV2D* P, PV2D* vGrande, double &thit, PV2D* &normalIn
         if (discriminante < 0) return false;
         if (discriminante == 0){
                 thit = -b / 2*a;
-                normalIn = new PV2D(1,1);
+                PV2D* puntoCorte = new PV2D(P->x + thit * v->x, P->y + thit * v->y);
+                normalIn = new PV2D((puntoCorte->y - centro->y), (puntoCorte->x - centro->x));
                 return true;
         }
         if (discriminante > 0){
                 double t1 = (-b - sqrt(discriminante)) / 2*a;
                 double t2 = (-b + sqrt(discriminante)) / 2*a;
                 thit = min(t1,t2);
-                normalIn = new PV2D(1,1);
+                PV2D* puntoCorte = new PV2D(P->x + thit * v->x, P->y + thit * v->y);
+                normalIn = new PV2D((puntoCorte->y - centro->y), (puntoCorte->x - centro->x));
                 return true;
         }
+        return false;
 };
 
 double Circulo::modulo(PV2D * v){
-        return   sqrt(pow(v->x,2) + pow(v->y,2));
+        return sqrt(pow(v->x,2) + pow(v->y,2));
 };
 
 #pragma package(smart_init)

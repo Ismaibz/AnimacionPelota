@@ -259,6 +259,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                 yCentro = (ClientHeight/2 - Y) / escalaAlto;
                                 Circulo* c = new Circulo(new PV2D(xCentro,yCentro),random(50));
                                 escena->aniadirObstaculo(c);
+                                circulos = false;
                                 GLScene();
                         }
                         }

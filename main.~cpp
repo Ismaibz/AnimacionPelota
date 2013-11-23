@@ -293,3 +293,10 @@ void __fastcall TMainForm::Triangulo1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMainForm::Circulo1Click(TObject *Sender)
+{
+        circulos = true;
+        ShowMessage("Seleccione un punto para que sea el centro del circulo");        
+}
+//---------------------------------------------------------------------------
+
