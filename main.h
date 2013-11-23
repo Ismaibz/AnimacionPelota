@@ -12,6 +12,7 @@
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
+#include "Circulo.h"
 
 #include "TFormVelocidad.h"
 #include "Lista.h"
@@ -49,6 +50,7 @@ __published:	// IDE-managed Components
         void __fastcall TimerTimer(TObject *Sender);
         void __fastcall ActivaTimerClick(TObject *Sender);
         void __fastcall Triangulo1Click(TObject *Sender);
+        void __fastcall Circulo1Click(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;
@@ -70,6 +72,8 @@ private:
         PV2D *vt1;
         PV2D *vt2;
         PV2D *vt3;
+        bool circulos;
+        int nCirculos;
 
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

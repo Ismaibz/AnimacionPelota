@@ -45,6 +45,7 @@ object MainForm: TMainForm
       end
       object Circulo1: TMenuItem
         Caption = 'Circulo'
+        OnClick = Circulo1Click
       end
     end
   end

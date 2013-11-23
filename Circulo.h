@@ -5,8 +5,9 @@
 //---------------------------------------------------------------------------
 
 #include "Obstaculo.h"
+#include "Math.h"
 
-const int MAX_LADOS = 500;
+const int MAX_LADOS_CIRCULO = 500;
 
 class Circulo : public Obstaculo{
 
@@ -14,13 +15,15 @@ class Circulo : public Obstaculo{
 		PV2D* centro;
                 GLdouble radio;
                 GLdouble radio2;
-                PV2D* contorno[MAX_LADOS];
-                bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);  
-                void draw(){};
+                PV2D* contorno[MAX_LADOS_CIRCULO];
+                bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);
+                void draw();
 
+	        Circulo();
+	        Circulo(PV2D* centron, GLdouble radion);
 
-	Circulo();
-	Circulo(PV2D* centron, GLdouble radion);
+        private:
+                double modulo(PV2D*);
         
 
 };

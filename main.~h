@@ -12,6 +12,7 @@
 #include "Lista.h"
 #include "Obstaculo.h"
 #include "Triangulo.h"
+#include "Circulo.h"
 
 #include "TFormVelocidad.h"
 #include "Lista.h"
@@ -70,6 +71,8 @@ private:
         PV2D *vt1;
         PV2D *vt2;
         PV2D *vt3;
+        bool circulos;
+        int nCirculos;
 
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

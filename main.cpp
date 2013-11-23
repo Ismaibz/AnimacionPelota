@@ -41,6 +41,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     GLdouble yCentro = 0;
     GLdouble radio = 0;
     Timer->Enabled = false;
+    circulos = false;
 
 
     
@@ -150,6 +151,7 @@ void __fastcall TMainForm::NuevaPelota1Click(TObject *Sender)
        radio = atof(rad.c_str());
        ShowMessage("Presione un punto para colocar la pelota");
        inicio = true;
+       nCirculos = 0;
 }
 //---------------------------------------------------------------------------
 
@@ -248,6 +250,18 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                         escena->aniadirObstaculo(triangulo);
                                 }
                         }
+                        else {
+                                if (circulos == true){
+                                nCirculos++;
+                                GLfloat escalaAncho = ClientWidth / (xRight - xLeft);
+                                GLfloat escalaAlto = ClientHeight / (yTop - yBot);
+                                xCentro = (X + xLeft * escalaAncho) / escalaAncho;
+                                yCentro = (ClientHeight/2 - Y) / escalaAlto;
+                                Circulo* c = new Circulo(new PV2D(xCentro,yCentro),random(50));
+                                escena->aniadirObstaculo(c);
+                                GLScene();
+                        }
+                        }
 
                 }
         }
@@ -276,6 +290,13 @@ void __fastcall TMainForm::Triangulo1Click(TObject *Sender)
         ShowMessage("Indica los 3 vertices en sentido contrahorario");
         triangulo = true;
         vertice = 0;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Circulo1Click(TObject *Sender)
+{
+        circulos = true;
+        ShowMessage("Seleccione un punto para que sea el centro del circulo");        
 }
 //---------------------------------------------------------------------------
 
