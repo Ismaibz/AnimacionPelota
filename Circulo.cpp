@@ -10,7 +10,8 @@
 
 //---------------------------------------------------------------------------
 
-Circulo::Circulo(PV2D* centron, GLdouble radion){
+Circulo::Circulo(PV2D* centron, GLdouble radion, bool pint){
+        pintable = pint;
         centro = new PV2D(*centron);
         radio = radion;
         radio2 = pow(radio,2);
@@ -33,11 +34,13 @@ Circulo::Circulo(PV2D* centron, GLdouble radion){
 };
 
 void Circulo::draw(){
-        glBegin(GL_POLYGON);
-                for (int i = 0; i < MAX_LADOS_CIRCULO; i++){
-                        glVertex2d(contorno[i]->x,contorno[i]->y);
-                }
-        glEnd();
+        if (pintable == true){
+                glBegin(GL_POLYGON);
+                        for (int i = 0; i < MAX_LADOS_CIRCULO; i++){
+                                glVertex2d(contorno[i]->x,contorno[i]->y);
+                        }
+                glEnd();
+        }
 };
 
 bool Circulo::interseccion(PV2D* P, PV2D* vGrande, double &thit, PV2D* &normalIn){
@@ -48,10 +51,10 @@ bool Circulo::interseccion(PV2D* P, PV2D* vGrande, double &thit, PV2D* &normalIn
 
         double discriminante = pow(b,2) - 4*a*c;
         if (discriminante < 0) return false;
-        if (discriminante > -0.1 && discriminante < 0.1){
+        if (discriminante > -1 && discriminante < 1){
                 thit = -b / 2*a;
                 PV2D* puntoCorte = new PV2D(P->x + thit * v->x, P->y + thit * v->y);
-                normalIn = new PV2D((puntoCorte->y - centro->y), (puntoCorte->x - centro->x));
+                normalIn = new PV2D((puntoCorte->x - centro->x), (puntoCorte->y - centro->y));
                 return true;
         }
         if (discriminante > 0){
@@ -59,7 +62,7 @@ bool Circulo::interseccion(PV2D* P, PV2D* vGrande, double &thit, PV2D* &normalIn
                 double t2 = (-b + sqrt(discriminante)) / 2*a;
                 thit = min(t1,t2);
                 PV2D* puntoCorte = new PV2D(P->x + thit * v->x, P->y + thit * v->y);
-                normalIn = new PV2D((puntoCorte->y - centro->y), (puntoCorte->x - centro->x));
+                normalIn = new PV2D((puntoCorte->x - centro->x), (puntoCorte->y - centro->y));
                 return true;
         }
         return false;

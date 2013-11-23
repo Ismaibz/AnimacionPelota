@@ -10,7 +10,6 @@ class Obstaculo{
                 virtual void draw() = 0;
                 virtual bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn) = 0;
 
-
 };
 
 

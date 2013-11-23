@@ -4,7 +4,6 @@
 #pragma hdrstop
 USERES("AnimacionPelota.res");
 USEFORM("main.cpp", MainForm);
-
 USEUNIT("Obstaculo.cpp");
 USEUNIT("Triangulo.cpp");
 USEUNIT("Circulo.cpp");
@@ -16,7 +15,7 @@ USEUNIT("Pelota.cpp");
 USEUNIT("PV2D.cpp");
 USEFORM("TFormRadio.cpp", FormRadio);
 USEFORM("TFormVelocidad.cpp", FormVelocidad);
-
+USEUNIT("Escena.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

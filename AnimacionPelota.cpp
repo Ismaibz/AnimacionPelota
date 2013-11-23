@@ -16,6 +16,7 @@ USEUNIT("PV2D.cpp");
 USEFORM("TFormRadio.cpp", FormRadio);
 USEFORM("TFormVelocidad.cpp", FormVelocidad);
 USEUNIT("Escena.cpp");
+USEUNIT("Recubrimiento.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

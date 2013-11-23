@@ -7,7 +7,7 @@
 #include "Obstaculo.h"
 #include "Pelota.h"
 
-const int MAX_OBSTACULOS = 16;
+const int MAX_OBSTACULOS = 35;
 class Escena{
 
         public:

@@ -24,6 +24,7 @@ class Pelota{
         void ponerVelocidad(GLdouble vel);
         void movimiento(GLdouble avance);
         void rebota(PV2D* n);
+        double modulo(PV2D* v);
 
 	
 

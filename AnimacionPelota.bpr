@@ -6,7 +6,7 @@
     <PROJECT value="AnimacionPelota.exe"/>
     <OBJFILES value="AnimacionPelota.obj main.obj Obstaculo.obj Triangulo.obj Circulo.obj 
       Obstaculo.obj Triangulo.obj Circulo.obj Lapiz.obj Pelota.obj PV2D.obj 
-      TFormRadio.obj TFormVelocidad.obj Escena.obj"/>
+      TFormRadio.obj TFormVelocidad.obj Escena.obj Recubrimiento.obj"/>
     <RESFILES value="AnimacionPelota.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>

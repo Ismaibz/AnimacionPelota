@@ -94,7 +94,7 @@ bool Triangulo::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &norm
 
 double Triangulo::modulo(PV2D * v){
 
-        return   sqrt(pow(v->x,2) + pow(v->y,2));
+        return sqrt(pow(v->x,2) + pow(v->y,2));
 };
 
 

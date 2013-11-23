@@ -252,13 +252,13 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                         }
                         else {
                                 if (circulos == true){
-                                nCirculos++;
                                 GLfloat escalaAncho = ClientWidth / (xRight - xLeft);
                                 GLfloat escalaAlto = ClientHeight / (yTop - yBot);
                                 xCentro = (X + xLeft * escalaAncho) / escalaAncho;
                                 yCentro = (ClientHeight/2 - Y) / escalaAlto;
-                                Circulo* c = new Circulo(new PV2D(xCentro,yCentro),random(50));
+                                Circulo* c = new Circulo(new PV2D(xCentro,yCentro),random(50),true);
                                 escena->aniadirObstaculo(c);
+                                circulos = false;
                                 GLScene();
                         }
                         }

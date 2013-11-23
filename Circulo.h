@@ -18,9 +18,10 @@ class Circulo : public Obstaculo{
                 PV2D* contorno[MAX_LADOS_CIRCULO];
                 bool interseccion(PV2D* P, PV2D* v, double &thit, PV2D* &normalIn);
                 void draw();
+                bool pintable;
 
 	        Circulo();
-	        Circulo(PV2D* centron, GLdouble radion);
+	        Circulo(PV2D* centron, GLdouble radion, bool pint);
 
         private:
                 double modulo(PV2D*);
