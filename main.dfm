@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 315
-  Top = 171
-  Width = 696
-  Height = 427
+  Left = 189
+  Top = 134
+  Width = 800
+  Height = 479
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -36,6 +36,16 @@ object MainForm: TMainForm
     object ActivaTimer: TMenuItem
       Caption = 'Timer'
       OnClick = ActivaTimerClick
+    end
+    object Obstaculos1: TMenuItem
+      Caption = 'Obstaculos'
+      object Triangulo1: TMenuItem
+        Caption = 'Triangulo'
+        OnClick = Triangulo1Click
+      end
+      object Circulo1: TMenuItem
+        Caption = 'Circulo'
+      end
     end
   end
   object Timer: TTimer

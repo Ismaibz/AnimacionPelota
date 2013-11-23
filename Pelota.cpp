@@ -54,9 +54,15 @@ void Pelota::movimiento(GLdouble avance){
         }
 }
 
-void Pelota::rebota(PV2D *nG){
+void Pelota::rebota(PV2D* n)
+{
+        GLdouble a=(vector->dot(n))/(n->dot(n));
+        GLdouble x=vector->x-2*a*n->x;
+        GLdouble y=vector->y-2*a*n->y;
 
-        vector = new PV2D (nG->x,nG->y);
+        vector = new PV2D (x,y);
+
 }
+
 
 #pragma package(smart_init)

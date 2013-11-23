@@ -34,6 +34,9 @@ __published:	// IDE-managed Components
         TMenuItem *AvanzarMenu;
         TTimer *Timer;
         TMenuItem *ActivaTimer;
+        TMenuItem *Obstaculos1;
+        TMenuItem *Triangulo1;
+        TMenuItem *Circulo1;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormPaint(TObject *Sender);
@@ -45,6 +48,7 @@ __published:	// IDE-managed Components
           TShiftState Shift, int X, int Y);
         void __fastcall TimerTimer(TObject *Sender);
         void __fastcall ActivaTimerClick(TObject *Sender);
+        void __fastcall Triangulo1Click(TObject *Sender);
 private:
         HDC hdc;
         HGLRC hrc;
@@ -61,7 +65,12 @@ private:
         GLdouble yCentro;
         GLdouble radio;
         Escena *escena;
-        
+        bool triangulo;
+        int vertice;
+        PV2D *vt1;
+        PV2D *vt2;
+        PV2D *vt3;
+
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);
 };

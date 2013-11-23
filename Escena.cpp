@@ -47,21 +47,19 @@ void Escena::aniadirObstaculo(Obstaculo *o)
 
 void Escena::draw()
 {
-     glBegin(GL_POLYGON);
+     glColor3f(1.0,0.0,0.0);
+     glBegin(GL_LINE_LOOP);
      for (int i = 0; i < MAX_LADOS; i++)
      {
         glVertex2d(pelota->circulo[i]->x,pelota->circulo[i]->y);
      }
      glEnd();
+     glColor3f(0.0,0.0,0.0);
      for (int i=0; i < nObstaculos; i++)
      {
         obstaculos[i]->draw();
      }
-     glColor3f(1.0,1.0,1.0);
-     glBegin(GL_POINTS);
-        glVertex2d(pelota->centro->x,pelota->centro->y);
-     glEnd();
-     glColor3f(0,0,0);
+     
 
 
      

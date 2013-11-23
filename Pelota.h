@@ -23,7 +23,7 @@ class Pelota{
         void poner_vector(PV2D* vectorn);
         void ponerVelocidad(GLdouble vel);
         void movimiento(GLdouble avance);
-        void rebota(PV2D *nG);
+        void rebota(PV2D* n);
 
 	
 

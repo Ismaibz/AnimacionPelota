@@ -100,7 +100,7 @@ double Triangulo::modulo(PV2D * v){
 
 void Triangulo::draw()
 {
-       glBegin(GL_POLYGON);
+       glBegin(GL_LINE_LOOP);
                 glVertex2d(vertices[0]->x,vertices[0]->y);
                 glVertex2d(vertices[1]->x,vertices[1]->y);
                 glVertex2d(vertices[2]->x,vertices[2]->y);

@@ -182,29 +182,29 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 direccion = true;
 
                 PV2D *v1 = new PV2D(ClientWidth + 100,0);
-                PV2D *v2 = new PV2D(ClientWidth ,ClientHeight + 100);
-                PV2D *v3 = new PV2D(ClientWidth ,- ClientHeight - 100);
+                PV2D *v2 = new PV2D(ClientWidth - 50 ,ClientHeight + 100);
+                PV2D *v3 = new PV2D(ClientWidth -50 ,- ClientHeight - 100);
 
                 Obstaculo *triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
                 v1 = new PV2D(- ClientWidth - 100 ,0);
-                v2 = new PV2D(- ClientWidth ,-ClientHeight - 100);
-                v3 = new PV2D(- ClientWidth ,ClientHeight + 100);
+                v2 = new PV2D(- ClientWidth + 50,-ClientHeight - 100);
+                v3 = new PV2D(- ClientWidth + 50,ClientHeight + 100);
 
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
 
                 v1 = new PV2D(0,ClientHeight + 100);
-                v2 = new PV2D(-ClientWidth - 100 ,ClientHeight );
-                v3 = new PV2D( ClientWidth + 100, ClientHeight );
+                v2 = new PV2D(-ClientWidth - 100 ,ClientHeight - 50 );
+                v3 = new PV2D( ClientWidth + 100, ClientHeight - 50);
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
                 v1 = new PV2D(0,-ClientHeight - 100 );
-                v2 = new PV2D(ClientWidth + 100,-ClientHeight );
-                v3 = new PV2D(- ClientWidth - 100,- ClientHeight );
+                v2 = new PV2D(ClientWidth + 100,-ClientHeight + 50);
+                v3 = new PV2D(- ClientWidth - 100,- ClientHeight + 50 );
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
 
@@ -227,6 +227,29 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                         escena->pelota->ponerVelocidad(atof(vel.c_str()));
                         GLScene();
                 }
+                else{
+                        if (triangulo == true)
+                        {
+                                GLfloat escalaAncho = ClientWidth / (xRight - xLeft);
+                                GLfloat escalaAlto = ClientHeight / (yTop - yBot);
+                                xCentro = (X + xLeft * escalaAncho) / escalaAncho;
+                                yCentro = (ClientHeight/2 - Y) / escalaAlto;
+                                if (vertice == 0){
+                                        vt1 = new PV2D(xCentro,yCentro);
+                                        vertice++;
+                                } else if (vertice == 1){
+                                        vt2 = new PV2D(xCentro,yCentro);
+                                        vertice++;
+                                } else if (vertice == 2){
+                                        vt3 = new PV2D(xCentro,yCentro);
+                                        vertice = 0;
+                                        triangulo = false;
+                                        Obstaculo *triangulo = new Triangulo(vt1,vt2,vt3);
+                                        escena->aniadirObstaculo(triangulo);
+                                }
+                        }
+
+                }
         }
        GLScene();
 }
@@ -235,8 +258,9 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
 void __fastcall TMainForm::TimerTimer(TObject *Sender)
 {
         Timer->Enabled = false;
+        Timer->Interval = 10;
         escena->step();
-        GlScene();
+        GLScene();
         Timer->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -244,6 +268,14 @@ void __fastcall TMainForm::TimerTimer(TObject *Sender)
 void __fastcall TMainForm::ActivaTimerClick(TObject *Sender)
 {
         Timer->Enabled = !Timer->Enabled;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Triangulo1Click(TObject *Sender)
+{
+        ShowMessage("Indica los 3 vertices en sentido contrahorario");
+        triangulo = true;
+        vertice = 0;
 }
 //---------------------------------------------------------------------------
 
