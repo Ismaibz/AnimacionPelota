@@ -12,7 +12,7 @@ const int MAX_ANGULO = 100;
 class Recubrimiento : public Obstaculo{
         public:
                 PV2D* vertices[MAX_RECUBRIMIENTO];
-                bool interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn){};
+                bool interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn);
                 void draw();
                 Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2);
                 double modulo(PV2D* v);

@@ -102,6 +102,42 @@ Recubrimiento::Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2){
 
 void Recubrimiento::draw(){}
 
+
+bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn)
+{
+     GLdouble tIn = 0;
+     GLdouble tOut = 0;
+     int i = 0;
+     bool encontrado = false;
+
+     while (!encontrado && i < MAX_RECUBRIMIENTO){
+
+        int j = (i + 1) % MAX_RECUBRIMIENTO;
+
+        PV2D *aux = vertices[j]->restaVertices(vertices[i]);
+        PV2D * normal = new PV2D (aux->y, - aux->x);
+        
+        GLdouble numerador = normal->dot(P->restaVertices(vertices[i]));
+        GLdouble denominador =  normal->dot(direccion);
+
+        if (denominador == 0 && numerador >= 0 ) encontrado = true;
+        else if (denominador != 0){
+                thit = - numerador / denominador;
+                if (denominador < 0){
+                        if (thit > tIn){
+                                tIn = thit;
+                                normalIn = normal;
+                        }
+                }else if (denominador > 0) tOut = min(tOut,thit);
+                encontrado = tIn > tOut;
+        }
+        i++;
+     }
+     return !encontrado;
+
+}
+
+
 double Recubrimiento::modulo(PV2D * v){
         return sqrt(pow(v->x,2) + pow(v->y,2));
 };
