@@ -187,28 +187,36 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                 PV2D *v2 = new PV2D(ClientWidth - 50 ,ClientHeight + 100);
                 PV2D *v3 = new PV2D(ClientWidth -50 ,- ClientHeight - 100);
 
+                Obstaculo* r = new Recubrimiento(escena->pelota->radio,v1,v2,v3);
                 Obstaculo *triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
+                escena->aniadirObstaculo(r);
 
                 v1 = new PV2D(- ClientWidth - 100 ,0);
                 v2 = new PV2D(- ClientWidth + 50,-ClientHeight - 100);
                 v3 = new PV2D(- ClientWidth + 50,ClientHeight + 100);
 
+                r = new Recubrimiento(escena->pelota->radio,v1,v2,v3);
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
+                escena->aniadirObstaculo(r);
 
 
                 v1 = new PV2D(0,ClientHeight + 100);
                 v2 = new PV2D(-ClientWidth - 100 ,ClientHeight - 50 );
                 v3 = new PV2D( ClientWidth + 100, ClientHeight - 50);
+                r = new Recubrimiento(escena->pelota->radio,v1,v2,v3);
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
+                escena->aniadirObstaculo(r);
 
                 v1 = new PV2D(0,-ClientHeight - 100 );
                 v2 = new PV2D(ClientWidth + 100,-ClientHeight + 50);
                 v3 = new PV2D(- ClientWidth - 100,- ClientHeight + 50 );
+                r = new Recubrimiento(escena->pelota->radio,v1,v2,v3);
                 triangulo = new Triangulo(v1,v2,v3);
                 escena->aniadirObstaculo(triangulo);
+                escena->aniadirObstaculo(r);
 
 
 
@@ -246,9 +254,12 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                         vt3 = new PV2D(xCentro,yCentro);
                                         vertice = 0;
                                         triangulo = false;
+                                        Obstaculo* r = new Recubrimiento(escena->pelota->radio,vt1,vt2,vt3);
                                         Obstaculo *triangulo = new Triangulo(vt1,vt2,vt3);
                                         escena->aniadirObstaculo(triangulo);
+                                        escena->aniadirObstaculo(r);
                                 }
+
                         }
                         else {
                                 if (circulos == true){

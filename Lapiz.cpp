@@ -65,7 +65,7 @@ void Lapiz::forward(GLdouble dist, bool draw)
 
 void Lapiz::lookAt(PV2D* p)
 {
-        dir = atan2(p->y-pos->y,p->x-pos->x)/PI;
+        dir = atan2(p->y-pos->y,p->x-pos->x);
 };
 
 #pragma package(smart_init)

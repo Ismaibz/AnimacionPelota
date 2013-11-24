@@ -13,6 +13,7 @@
 #include "Obstaculo.h"
 #include "Triangulo.h"
 #include "Circulo.h"
+#include "Recubrimiento.h"
 
 #include "TFormVelocidad.h"
 #include "Lista.h"

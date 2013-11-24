@@ -246,9 +246,12 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                         vt3 = new PV2D(xCentro,yCentro);
                                         vertice = 0;
                                         triangulo = false;
+                                        Recubrimiento* r = new Recubrimiento(escena->pelota->radio,vt1,vt2,vt3);
                                         Obstaculo *triangulo = new Triangulo(vt1,vt2,vt3);
                                         escena->aniadirObstaculo(triangulo);
+                                        escena->aniadirObstaculo(r);
                                 }
+
                         }
                         else {
                                 if (circulos == true){
@@ -256,8 +259,11 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                 GLfloat escalaAlto = ClientHeight / (yTop - yBot);
                                 xCentro = (X + xLeft * escalaAncho) / escalaAncho;
                                 yCentro = (ClientHeight/2 - Y) / escalaAlto;
-                                Circulo* c = new Circulo(new PV2D(xCentro,yCentro),random(50),true);
+                                double rad = random(75);
+                                Circulo* c = new Circulo(new PV2D(xCentro,yCentro),rad,true);
                                 escena->aniadirObstaculo(c);
+                                Circulo* c1 = new Circulo(new PV2D(xCentro,yCentro),rad+escena->pelota->radio,false);
+                                escena->aniadirObstaculo(c1);
                                 circulos = false;
                                 GLScene();
                         }
