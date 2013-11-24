@@ -16,6 +16,8 @@ class Recubrimiento : public Obstaculo{
                 void draw();
                 Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2);
                 double modulo(PV2D* v);
+                PV2D* normal[MAX_RECUBRIMIENTO];
+                double velocidad;
 };
 
 

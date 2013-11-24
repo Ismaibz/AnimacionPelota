@@ -235,6 +235,11 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                         FormVelocidad->ShowModal();
                         AnsiString vel = FormVelocidad->EditVelocidad->Text;
                         escena->pelota->ponerVelocidad(atof(vel.c_str()));
+                        for(int k=0; k<escena->nObstaculos && k < 8; k++){
+                                if ((k%2) == 1){
+                                        ((Recubrimiento*)(escena->obstaculos[k]))->velocidad = atof(vel.c_str());
+                                }
+                        }
                         GLScene();
                 }
                 else{
@@ -257,6 +262,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                         Obstaculo* r = new Recubrimiento(escena->pelota->radio,vt1,vt2,vt3);
                                         Obstaculo *triangulo = new Triangulo(vt1,vt2,vt3);
                                         escena->aniadirObstaculo(triangulo);
+                                        ((Recubrimiento*)(r))->velocidad = escena->pelota->velocidad;
                                         escena->aniadirObstaculo(r);
                                 }
 

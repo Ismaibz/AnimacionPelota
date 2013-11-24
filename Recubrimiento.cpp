@@ -9,6 +9,7 @@
 
 Recubrimiento::Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2){
 
+        velocidad = 1;
         //Segmento de v0 a v1
         int actual = 0;
         Lapiz* lapiz = new Lapiz(v0,0);
@@ -98,43 +99,77 @@ Recubrimiento::Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2){
            lapiz->turn(alfa);
         }
         actual = i;
+
+        //Calculo las normales
+        for(int k=0; k<MAX_RECUBRIMIENTO; k++){
+                PV2D *aux = vertices[(k+1)%MAX_RECUBRIMIENTO]->restaVertices(vertices[k]);
+                normal[k] = new PV2D (aux->y / modulo(aux)*10, - aux->x / modulo(aux)*10);
+        }
 }
 
-void Recubrimiento::draw(){}
+void Recubrimiento::draw(){
+        glColor3f(1.0,0.0,0.0);
+        glBegin(GL_LINE_LOOP);
+        for (int i = 0; i < MAX_RECUBRIMIENTO; i++){
+                glVertex2d(vertices[i]->x,vertices[i]->y);
+        }
+        glEnd();
+        glColor3f(0.0,0.0,0.0);
+        /*
+        //Dibujamos normales
+        glColor3f(1.0,0.0,1.0);
+        for (int i = 0; i<MAX_RECUBRIMIENTO; i++){
+                GLdouble mediox = (vertices[i%MAX_RECUBRIMIENTO]->x + vertices[(i+1)%MAX_RECUBRIMIENTO]->x)/2;
+                GLdouble medioy = (vertices[i%MAX_RECUBRIMIENTO]->y + vertices[(i+1)%MAX_RECUBRIMIENTO]->y)/2;
 
+                GLdouble finx = mediox + normal[i%MAX_RECUBRIMIENTO]->x;
+                GLdouble finy = medioy + normal[i%MAX_RECUBRIMIENTO]->y;
 
-bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn)
-{
+                glBegin(GL_LINES);
+                        glVertex2d(mediox,medioy);
+                        glVertex2d(finx,finy);
+                glEnd();
+        }
+        glColor3f(0.0,0.0,0.0);*/
+}
+
+bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn){
+     thit = 0;
      GLdouble tIn = 0;
-     GLdouble tOut = 0;
+     GLdouble tOut = 1;
+     int normalIntAux = -1;
      int i = 0;
      bool encontrado = false;
+     PV2D* dir = new PV2D(direccion->x / modulo(direccion)*velocidad, direccion->y / modulo(direccion)*velocidad);
 
      while (!encontrado && i < MAX_RECUBRIMIENTO){
 
-        int j = (i + 1) % MAX_RECUBRIMIENTO;
-
-        PV2D *aux = vertices[j]->restaVertices(vertices[i]);
-        PV2D * normal = new PV2D (aux->y, - aux->x);
+        //int j = (i + 1) % MAX_RECUBRIMIENTO;
         
-        GLdouble numerador = normal->dot(P->restaVertices(vertices[i]));
-        GLdouble denominador =  normal->dot(direccion);
+        GLdouble numerador = -(P->restaVertices(vertices[i]))->dot(normal[i]);
+        GLdouble denominador =  dir->dot(normal[i]);
 
-        if (denominador == 0 && numerador >= 0 ) encontrado = true;
-        else if (denominador != 0){
-                thit = - numerador / denominador;
-                if (denominador < 0){
+        if (denominador == 0 && (numerador == 0 || numerador > 0)) encontrado = true;
+        else if (!(denominador == 0 && (numerador < 0))){
+                thit = numerador / denominador;
+                if (dir->dot(normal[i]) < 0){
                         if (thit > tIn){
                                 tIn = thit;
-                                normalIn = normal;
+                                normalIntAux = i;
                         }
-                }else if (denominador > 0) tOut = min(tOut,thit);
+                }else if (dir->dot(normal[i]) > 0) tOut = min(tOut,thit);
                 encontrado = tIn > tOut;
         }
         i++;
      }
-     return !encontrado;
+     //Prueba
+     if(!encontrado && normalIntAux != -1){
+        normalIn = new PV2D(*normal[normalIntAux]);
+     }
+     else return false;
 
+     thit = tIn;
+     return !encontrado;
 }
 
 
