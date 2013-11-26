@@ -20,13 +20,13 @@ class Circulo : public Obstaculo{
                 void draw();
                 bool pintable;
 
+
 	        Circulo();
 	        Circulo(PV2D* centron, GLdouble radion, bool pint);
 
         private:
                 double modulo(PV2D*);
-        
-
+                
 };
 
 #endif

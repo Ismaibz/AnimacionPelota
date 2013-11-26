@@ -108,14 +108,14 @@ Recubrimiento::Recubrimiento(double rad, PV2D* v0, PV2D* v1, PV2D* v2){
 }
 
 void Recubrimiento::draw(){
-        glColor3f(1.0,0.0,0.0);
+        /*glColor3f(1.0,0.0,0.0);
         glBegin(GL_LINE_LOOP);
         for (int i = 0; i < MAX_RECUBRIMIENTO; i++){
                 glVertex2d(vertices[i]->x,vertices[i]->y);
         }
         glEnd();
         glColor3f(0.0,0.0,0.0);
-        /*
+        
         //Dibujamos normales
         glColor3f(1.0,0.0,1.0);
         for (int i = 0; i<MAX_RECUBRIMIENTO; i++){
@@ -133,9 +133,9 @@ void Recubrimiento::draw(){
         glColor3f(0.0,0.0,0.0);*/
 }
 
-bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn){
-     thit = 0;
-     GLdouble tIn = 0;
+bool Recubrimiento::cyrusBeck(PV2D* P, PV2D* direccion, double &tIn, PV2D* &normalIn){
+     GLdouble thit = 0;
+     tIn = 0;
      GLdouble tOut = 1;
      int normalIntAux = -1;
      int i = 0;
@@ -145,12 +145,12 @@ bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &
      while (!encontrado && i < MAX_RECUBRIMIENTO){
 
         //int j = (i + 1) % MAX_RECUBRIMIENTO;
-        
-        GLdouble numerador = -(P->restaVertices(vertices[i]))->dot(normal[i]);
+
+        GLdouble numerador = (vertices[i]->restaVertices(P))->dot(normal[i]);
         GLdouble denominador =  dir->dot(normal[i]);
 
-        if (denominador == 0 && (numerador == 0 || numerador > 0)) encontrado = true;
-        else if (!(denominador == 0 && (numerador < 0))){
+        if (denominador == 0 && ((P->restaVertices(vertices[i]) == 0) || (P->restaVertices(vertices[i]) > 0))) encontrado = true;
+        else if (!(denominador == 0 && (P->restaVertices(vertices[i]) < 0))){
                 thit = numerador / denominador;
                 if (dir->dot(normal[i]) < 0){
                         if (thit > tIn){
@@ -170,6 +170,15 @@ bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &
 
      thit = tIn;
      return !encontrado;
+
+}
+
+bool Recubrimiento::interseccion(PV2D* P, PV2D* direccion, double &thit, PV2D* &normalIn){
+        GLdouble tIn = 0;
+        bool devolver = cyrusBeck(P, direccion, tIn, normalIn);
+        thit = tIn;
+        if (devolver && (thit < 1)) thit = thit * velocidad;
+        return devolver;
 }
 
 

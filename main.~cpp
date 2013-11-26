@@ -262,7 +262,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender,
                                         Obstaculo* r = new Recubrimiento(escena->pelota->radio,vt1,vt2,vt3);
                                         Obstaculo *triangulo = new Triangulo(vt1,vt2,vt3);
                                         escena->aniadirObstaculo(triangulo);
-                                        (Recubrimiento*)(r)->velocidad = escena->pelota->velocidad;
+                                        ((Recubrimiento*)(r))->velocidad = escena->pelota->velocidad;
                                         escena->aniadirObstaculo(r);
                                 }
 

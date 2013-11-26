@@ -18,6 +18,9 @@ class Recubrimiento : public Obstaculo{
                 double modulo(PV2D* v);
                 PV2D* normal[MAX_RECUBRIMIENTO];
                 double velocidad;
+
+        private:
+                bool cyrusBeck(PV2D* P, PV2D* direccion, double &tIn, PV2D* &normalIn);
 };
 
 
